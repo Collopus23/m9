@@ -193,8 +193,10 @@ public function destroy(string $id)
 
      // Hapus file CV jika ada
      if ($employee->encrypted_filename && Storage::disk('public')->exists('files/' . $employee->encrypted_filename)) {
-         Storage::disk('public')->delete('files/' . $employee->encrypted_filename);
-     }
+            Storage::disk('public')->delete('files/' . $employee->encrypted_filename);
+            $employee->original_filename = null;
+            $employee->encrypted_filename = null;
+    }
 
      // Hapus data karyawan
      $employee->delete();

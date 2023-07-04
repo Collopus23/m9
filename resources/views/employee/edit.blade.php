@@ -63,7 +63,7 @@
                                 <div class="text-danger"><small>{{ $message }}</small></div>
                             @enderror
                         </div>
-                        
+
                         <div class="col-md-12 mb-3">
                             <label for="age" class="form-label">Curriculum Vitae (CV)</label>
                             @if ($employee->original_filename)
@@ -72,13 +72,19 @@
                                     <i class="bi bi-download me-1"></i> Download CV
                                 </a>
 
-                                <form action="{{ route('employees.destroy', ['employee' => $employee->id]) }}" method="POST" class="d-inline">
-                                    @csrf
-                                    @method('DELETE')
+                                <a href="{{ route('employees.destroy', ['employee' => $employee->id]) }}" method="POST" class="d-inline"">
                                     <button type="submit" class="btn btn-danger btn-sm mt-2">
                                         <i class="bi bi-trash me-1"></i> Delete CV
                                     </button>
-                                </form>
+
+                                </a>
+                                {{-- <form action="{{ route('employees.destroy', ['employee' => $employee->id]) }}" method="POST" class="d-inline">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="submit" class="btn btn-danger btn-sm mt-2">
+
+                                    </button>
+                                </form> --}}
                             @else
                                 <h5>Tidak ada</h5>
                             @endif
