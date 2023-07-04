@@ -148,7 +148,7 @@ class EmployeeController extends Controller
 
         // Hapus file CV sebelumnya jika ada
         if ($employee->encrypted_filename && Storage::disk('public')->exists('files/' . $employee->encrypted_filename)) {
-            Storage::disk('public')->delete('files/' . $employee->encrypted_filename);
+            // Storage::disk('public')->delete('files/' . $employee->encrypted_filename);
             $employee->original_filename = null;
             $employee->encrypted_filename = null;
         }
